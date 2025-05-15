@@ -1,0 +1,51 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Fake WhatsApp</title>
+  <style>
+    body {
+      display: flex;
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+    #sidebar {
+      width: 200px;
+      background-color: #f1f1f1;
+      padding: 10px;
+      border-right: 1px solid #ccc;
+    }
+    .chat {
+      padding: 10px;
+      cursor: pointer;
+      border-bottom: 1px solid #ccc;
+    }
+    #conversation {
+      flex: 1;
+      padding: 20px;
+    }
+    .hidden {
+      display: none;
+    }
+    .message {
+      margin-bottom: 10px;
+    }
+    .author {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div id="sidebar">
+    <!-- Chat items will be injected here -->
+  </div>
+
+  <div id="conversation">
+    <!-- Chat boxes will be injected here -->
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
+
