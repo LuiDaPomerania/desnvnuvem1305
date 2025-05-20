@@ -1,57 +1,66 @@
+const grupos = [{
+  id : "grupoClasse15", nome: "Classe Matematica"  
+},
+{
+  id : "grupoCriado24", nome: "grupoStarupLegal"
+},
+{
+  id : "grupocriado54", nome: "GrupoHistoriaDaArte"
+}];
 
-const chats = [
-  { id: 'grupo1', nome: 'CS Squad' },
-  { id: 'grupo2', nome: 'Pokémon Fanclub' }
-];
-
-const mensagens = {
-  grupo1: [
-    { autor: 'Você', conteudo: 'Ventilador de teto' },
-    { autor: 'Amigo', conteudo: 'Adoro doenças respiratorias' }
+const messages = {
+  grupoClasse15: [
+    {autor: 'Kaue', conteudo: 'Bom dia grupo'},
+    {autor: 'Sasha', conteudo: 'Bom dia galera, o que vai cair na prova?'},
+    {autor: 'Violet', conteudo: 'Acho que tudo desde a ultima prova tirando o conteudo da prova passada'}
   ],
-  grupo2: [
-    { autor: 'Você', conteudo: 'Pokemon fav?' },
-    { autor: 'Eu', conteudo: 'Flygon' }
+
+  grupoCriado24: [
+    {autor: 'Gabriel', conteudo: 'E se a gente fizer panfletos? vcs acham que da certo?'},
+    {autor: 'Adore', conteudo: 'Acho que daria bastante certo sim'},
+    {autor: 'Adore', conteudo: 'botar naquelas paredes né?'},
+    {autor: 'Fernando', conteudo: 'sim'}
+  ],
+
+  grupocriado54: [
+    {autor: 'Fernando', conteudo: 'Ok, acho legal a gente dividir o trabalho bastante entre quem vai fazer a parte de personagem e background já que são igualmente importantes'},
+    {autor: 'Aquaria', conteudo: 'eu quero ficar com a parte de background'},
+    {autor: 'Bob', conteudo: 'Massa, eu quero ajudar no background também'}
   ]
 };
 
-// Função para inicializar a UI
-function init() {
-  const sidebar = document.getElementById('sidebar');
-  const conversation = document.getElementById('conversation');
+function codigoPrincipal(){
+  const sidebar = document.getElementById("sidebar");
+  const conversation = document.getElementById("conversation");
 
-  // Cria elementos de chat na sidebar
-  chats.forEach(chat => {
-    const div = document.createElement('div');
-    div.classList.add('chat');
-    div.textContent = chat.nome;
-    div.onclick = () => showChat(chat.id);
-    sidebar.appendChild(div);
+  grupos.forEach(grupoChat => {
+    const divChatIndividual = document.createElement('div');
+    divChatIndividual.classList.add('chat');
+    divChatIndividual.textContent = grupoChat.nome;
+    divChatIndividual.onclick = () => mostrarChat(grupoChat.id);
+    sidebar.appendChild(divChatIndividual);
 
-    // Cria containers para cada chat
     const chatBox = document.createElement('div');
-    chatBox.id = chat.id;
-    chatBox.classList.add('chat-box', 'hidden');
+    chatBox.id = grupoChat.id;
+    chatBox.classList.add('chatBoxClass', 'hidden');
     conversation.appendChild(chatBox);
   });
 }
 
-// Mostra mensagens do chat
-function showChat(id) {
-  document.querySelectorAll('.chat-box').forEach(box => {
+function mostrarChat(id){
+  document.querySelectorAll('.chatBoxClass').forEach(box => {
     box.classList.add('hidden');
     box.innerHTML = '';
   });
+
   const box = document.getElementById(id);
-  mensagens[id].forEach(msg => {
-    const p = document.createElement('p');
-    p.classList.add('message');
-    p.innerHTML = `<span class="author">${msg.autor}:</span> ${msg.conteudo}`;
-    box.appendChild(p);
+  messages[id].forEach(mensagem => {
+    const paragrafo = document.createElement('p');
+    paragrafo.classList.add('message');
+    paragrafo.innerHTML = `<span class="author">${mensagem.autor}:</span> ${mensagem.conteudo}`;
+    box.appendChild(paragrafo);
   });
   box.classList.remove('hidden');
 }
 
-// Inicializa ao carregar a página
-window.onload = init;
-
+document.addEventListener("DOMContentLoaded", codigoPrincipal);
